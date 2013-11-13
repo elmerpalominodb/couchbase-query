@@ -1,0 +1,2 @@
+PyYAML
+couchbase>=0.8
