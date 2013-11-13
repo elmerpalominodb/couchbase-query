@@ -1,0 +1,5 @@
+couchbase-query (0.1b.dev-1pdb.ubuntu12.4) unstable; urgency=low
+
+  * Initial release 
+
+ -- Elmer Medez <emedez@palominodb.com>  Wed, 13 Nov 2013 03:37:54 +0000

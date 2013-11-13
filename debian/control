@@ -1,0 +1,12 @@
+Source: couchbase-query
+Section: python
+Priority: extra
+Maintainer: Elmer Medez <emedez@palominodb.com>
+Build-Depends: debhelper (>= 8.0.0), python-all, python-setuptools
+Standards-Version: 3.9.2
+
+Package: couchbase-query
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ${python:Depends}
+Description: Couchbase Simple Query Tool
+ Connects to a couchbase instance and returns the contents of bucket given a key.
