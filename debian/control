@@ -5,7 +5,7 @@ Maintainer: Elmer Medez <emedez@palominodb.com>
 Build-Depends: debhelper (>= 8.0.0), python-all, python-setuptools
 Standards-Version: 3.9.2
 
-Package: couchbase-query
+Package: python-couchbase-query
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}, ${python:Depends}
 Description: Couchbase Simple Query Tool
