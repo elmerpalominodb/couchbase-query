@@ -45,31 +45,83 @@ python tests.py
 Extras
 ------
 
+
 ### Installing from an RPM package
 
-For CentOS 6:
 
-* Download an RPM package from the following link:
-http://ci.palominodb.com:8080/job/python-couchbase-query-centos-6-x86_64/
+For CentOS 5:
+
+* Download the RPM package from the following link:
+http://ci.palominodb.com:8080/job/python26-couchbase-query-centos-5-x86_64/
 
 * Enable EPEL repository
-$ wget -N http://dl.fedoraproject.org/pub/epel/6/`uname -i`/epel-release-6-8.noarch.rpm
-$ sudo rpm -Uvh epel-release-6-8.noarch.rpm
+# wget  http://dl.fedoraproject.org/pub/epel/5/`uname -i`/epel-release-5-4.noarch.rpm
+# rpm -Uvh epel-release-5-4.noarch.rpm
 
 * Enable IUS repository
-$ wget -N http://dl.iuscommunity.org/pub/ius/stable/CentOS/6/x86_64/ius-release-1.0-11.ius.centos6.noarch.rpm
-$ sudo rpm -Uvh ius-release-1.0-11.ius.centos6.noarch.rpm
+# wget http://dl.iuscommunity.org/pub/ius/stable/CentOS/5/x86_64/ius-release-1.0-11.ius.centos5.noarch.rpm
+# rpm -Uvh ius-release*.rpm
 
 * Enable PDB repository
 * create /etc/yum.repos.d/pdb.repo with the following contents:
 [pdb]
-name=PalominoDB Packages for Enterprise Linux 6 - $basearch
+name=PalominoDB Packages for Enterprise Linux 5 - x86_64
+baseurl=http://yum.palominodb.com/centos/5/x86_64
+enabled=1
+gpgcheck=0
+
+* Install script
+# yum --nogpgcheck localinstall <RPM PACKAGE>
+
+* Upon succesful installation, the following executable script should be available:
+/usr/bin/python-couchbase-query
+
+
+For CentOS 6:
+
+* Download the RPM package from the following link:
+http://ci.palominodb.com:8080/job/python-couchbase-query-centos-6-x86_64/
+
+* Enable EPEL repository
+# wget -N http://dl.fedoraproject.org/pub/epel/6/`uname -i`/epel-release-6-8.noarch.rpm
+# rpm -Uvh epel-release-6-8.noarch.rpm
+
+* Enable IUS repository
+# wget -N http://dl.iuscommunity.org/pub/ius/stable/CentOS/6/x86_64/ius-release-1.0-11.ius.centos6.noarch.rpm
+# rpm -Uvh ius-release-1.0-11.ius.centos6.noarch.rpm
+
+* Enable PDB repository
+* create /etc/yum.repos.d/pdb.repo with the following contents:
+[pdb]
+name=PalominoDB Packages for Enterprise Linux 6 - x86_64
 baseurl=http://yum.palominodb.com/centos/6/x86_64
 enabled=1
 gpgcheck=0
 
 * Install script
-$ sudo yum --nogpgcheck localinstall <RPM PACKAGE>
+# yum --nogpgcheck localinstall <RPM PACKAGE>
 
 * Upon succesful installation, the following executable script should be available:
 /usr/bin/python-couchbase-query
+
+
+### Installing from DEB package
+
+
+For Ubuntu 12.04:
+
+* Download the DEB package from the following link:
+http://ci.palominodb.com:8080/job/python-couchbase-query-ubuntu-12.04-x86_64/
+
+* Enable PDB repository
+* create /etc/apt/sources.list.d/pdb.list with the following contents:
+* (note: the following is a temporary/unofficial repository for PalominoDB DEB packages)
+deb http://ec2-54-254-45-178.ap-southeast-1.compute.amazonaws.com/debs/ amd64/
+
+* Install script
+$ sudo gdebi <DEB PACKAGE>
+
+* Upon succesful installation, the following executable script should be available:
+/usr/bin/python-couchbase-query
+
+

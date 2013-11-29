@@ -5,9 +5,14 @@ ez_setup.py
 query.py
 setup.cfg
 setup.py
+ci/build-centos-5-x86_64.sh
+ci/build-centos-6-x86_64.sh
+ci/build-ubuntu-12.04-x86_64.sh
 couchbase_query.egg-info/PKG-INFO
 couchbase_query.egg-info/SOURCES.txt
 couchbase_query.egg-info/dependency_links.txt
 couchbase_query.egg-info/entry_points.txt
 couchbase_query.egg-info/requires.txt
 couchbase_query.egg-info/top_level.txt
+docs/jenkins-configuration.txt
+docs/man/python-couchbase-query.1

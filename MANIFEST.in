@@ -2,3 +2,5 @@ include COPYING
 include README.md
 include ez_setup.py
 include query.py
+include ci/*
+recursive-include docs *

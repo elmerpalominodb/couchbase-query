@@ -1,0 +1,41 @@
+.\" Manpage for python-couchbase-query.
+.nh
+.na
+.TH PYTHON-COUCHBASE-QUERY 1 "2013 Nov 21"
+.SH NAME
+python-couchbase-query \- sets/returns Couchbase bucket key content
+.SH SYNOPSIS
+.B python-couchbase-query
+.B [
+.I OPTION
+.B ]...
+.I key
+.SH DESCRIPTION
+Connects to a couchbase instance and sets/returns the contents of bucket given a key
+.SH OPTIONS
+.SS positional arguments:
+.TP
+\fIkey\fR
+bucket key
+.SS optional arguments:
+.TP
+\fB\-h\fR, \fB\-\-help\fR
+show this help message and exit
+.TP
+\fB\-C\fR CONFIG\fB, \-\-config\fR CONFIG
+config file to load options from (default: None)
+.TP
+\fB\-H\fR HOST\fB, \-\-host\fR HOST
+host (default: localhost:8091)
+.TP
+\fB\-u\fR USERNAME\fB, \-\-username\fR USERNAME
+username (default: default)
+.TP
+\fB\-p\fR PASSWORD\fB, \-\-password\fR PASSWORD
+password (default: )
+.TP
+\fB\-b\fR BUCKET\fB, \-\-bucket\fR BUCKET
+bucket (default: default)
+.TP
+\fB\-V\fR VALUE\fB, \-\-value\fR VALUE
+value of key to set to (default: None)
