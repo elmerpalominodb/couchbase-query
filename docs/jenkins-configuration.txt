@@ -1,0 +1,71 @@
+Introduction
+============
+
+This file documents the configuration used for building RPM packages using Jenkins CI server at http://ci.palominodb.com:8080/.  Field whose default values are acceptable are not listed.
+
+
+
+Target Platform: CentOS 6-x86_64
+================================
+
+[General]
+
+Project name: python-couchbase-query-centos-6-x86_64
+
+Description: Build python-couchbase-query RPM package for CentOS 6-x86_64.
+
+GitHub project: https://github.com/palominodb/palominodb-priv/
+
+Restrict where this project can be run: (checked)
+
+Label Expression: centos
+
+
+[Source Code Management]
+
+Git: (selected)
+
+Repositories > Repository URL: https://user:pass@github.com/palominodb/palominodb-priv.git
+
+Branches to build > Branch Specifier: master
+
+
+[Build Triggers]
+
+
+Build when a change is pushed to Github: (checked)
+
+
+[Build]
+
+
+Execute shell > Command:
+sudo cp -u $WORKSPACE/tools/packaging/mock-target-configs/centos-6-x86_64-epel-ius-pdb.cfg /etc/mock/
+rm -rf /home/jenkins/packages/python-couchbase-query-centos-6-x86_64
+rm -rf $WORKSPACE/results
+mkdir -p $WORKSPACE/results
+cd /home/jenkins/packages
+cp -a buildroot.clean python-couchbase-query-centos-6-x86_64
+cd $WORKSPACE/tools/couchbase/python-query
+python setup.py sdist -d /home/jenkins/packages/python-couchbase-query-centos-6-x86_64/SOURCES/
+cp $WORKSPACE/tools/couchbase/python-query/packaging/SPECS/CentOS/6/python-couchbase-query.spec /home/jenkins/packages/python-couchbase-query-centos-6-x86_64/SPECS/
+cd /home/jenkins/packages/python-couchbase-query-centos-6-x86_64
+rpmbuild -bs --nodeps --define "dist %{nil}" --define "_source_filedigest_algorithm md5" SPECS/python-couchbase-query.spec
+for f in SRPMS/*.rpm; do mock -r centos-6-x86_64-epel-ius-pdb rebuild $f --resultdir=$WORKSPACE/results ; done
+
+
+[Post-build Actions]
+
+
+Archive the artifacts > Files to archive: results/*
+
+
+
+Notes
+=====
+
+To trigger build when a change is pushed to Github, Jenkins Git Plugin Service Hook should be configured.
+The hook URL should be: http://user:pass@ci.palominodb.com:8080/github-webhook/
+
+Replace user:pass with a valid one.
+
